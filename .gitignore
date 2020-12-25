@@ -23,3 +23,11 @@ doc/api/
 .DS_Store
 
 README-HOW-TO-USE.pdf
+
+.idea/
+.android/
+.ios/
+
+*.gradle
+
+fl_meals.iml

@@ -6,6 +6,10 @@ import '../widgets/category_item.dart';
 class CategoriesScreen extends StatelessWidget {
   final List<Category> categories = DUMMY_CATEGORIES;
 
+  void testCar() {
+    categories.firstWhere((element) => element.id == "1", orElse: () {return null;});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +28,6 @@ class CategoriesScreen extends StatelessWidget {
   }
 
   CategoryItem categoryToWidget(Category category) {
-    return CategoryItem(category.title, category.color);
+    return CategoryItem(category);
   }
 }

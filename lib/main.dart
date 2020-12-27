@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/data/CategoriesProvider.dart';
 import 'package:flutter_complete_guide/screens/category_meals_screen.dart';
 import './screens/categories_screen.dart';
 
@@ -25,12 +26,12 @@ class MyApp extends StatelessWidget {
                     fontFamily: "RobotoCondensed"),
               ),
         ),
-        home: CategoriesScreen(),
+        home: CategoriesScreen(DummyCategoriesProvider()),
         // initialRoute: "/" // default is "/",
         // map with curly
         routes: {
           //set initial screen "/": (context) => CategoriesScreen()
-          CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
+          CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(DummyCategoriesProvider()),
         });
   }
 }

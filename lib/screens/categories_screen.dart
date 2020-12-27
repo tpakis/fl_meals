@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import '../utils/dummy_data.dart';
+import 'package:flutter_complete_guide/data/CategoriesProvider.dart';
 import '../models/category.dart';
 import '../widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  final List<Category> categories = DUMMY_CATEGORIES;
 
-  void testCar() {
-    categories.firstWhere((element) => element.id == "1", orElse: () {return null;});
-  }
+  final List<Category> categories;
+  final CategoriesProvider _categoriesProvider;
+
+  CategoriesScreen(this._categoriesProvider) :
+    categories = _categoriesProvider.getAllCategories();
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
+import '../data/CategoriesProvider.dart';
+import '../models/category.dart';
 
+// ignore: must_be_immutable
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = "/category-meals";
-  /*final String categoryId;
-  final String categoryTitle;
+  Category _category;
+  final CategoriesProvider _categoriesProvider;
 
-  CategoryMealsScreen(this.categoryId, this.categoryTitle)*/
+  CategoryMealsScreen(this._categoriesProvider);
 
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final categoryId = routeArgs["id"];
+    setupCategory(ModalRoute.of(context).settings.arguments as Map<String, String>);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("The Recipes"),
       ),
       body: Center(
-        child: Text(categoryId),
+        child: Text(_category.title),
       ),
     );
+  }
+
+  void setupCategory(Map<String, String> arguments) {
+    final categoryId = arguments["id"];
+    _category = _categoriesProvider.getCategoryById(categoryId);
   }
 }

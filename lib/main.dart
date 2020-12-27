@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/data/CategoriesProvider.dart';
+import 'package:flutter_complete_guide/data/MealsProvider.dart';
 import 'package:flutter_complete_guide/screens/category_meals_screen.dart';
 import './screens/categories_screen.dart';
 
@@ -31,7 +32,10 @@ class MyApp extends StatelessWidget {
         // map with curly
         routes: {
           //set initial screen "/": (context) => CategoriesScreen()
-          CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(DummyCategoriesProvider()),
+          CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(
+                DummyCategoriesProvider(),
+                DummyMealsProvider(),
+              ),
         });
   }
 }

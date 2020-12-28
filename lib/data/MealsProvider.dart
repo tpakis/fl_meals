@@ -39,7 +39,7 @@ class DummyMealsProvider implements MealsProvider {
   @override
   List<Meal> getAllMealsByCategoryId(String categoryId) {
     return _meals
-        .takeWhile(
+        .where(
             (element) => element.belongingCategories.contains(categoryId))
         .toList();
   }

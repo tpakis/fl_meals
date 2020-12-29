@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/screens/meal_detail_screen.dart';
 import '../widgets/icon_text.dart';
 import '../models/meal.dart';
 
@@ -6,18 +7,24 @@ class MealItem extends StatelessWidget {
   const MealItem({
     Key key,
     @required Meal meal,
-  })
-      : _meal = meal,
+  })  : _meal = meal,
         super(key: key);
 
   final Meal _meal;
 
-  void selectMeal() {}
+  void selectMeal(BuildContext context, String selectedMealId) {
+    Navigator.of(context).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: selectedMealId,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () {
+        selectMeal(context, _meal.id);
+      },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
@@ -62,11 +69,17 @@ class MealItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconText(
-                    iconData: Icons.schedule, text: "${_meal.duration} min",),
+                    iconData: Icons.schedule,
+                    text: "${_meal.duration} min",
+                  ),
                   IconText(
-                    iconData: Icons.work, text: "${_meal.complexity.name}",),
-                  IconText(iconData: Icons.money,
-                    text: "${_meal.affordability.name}",),
+                    iconData: Icons.work,
+                    text: "${_meal.complexity.name}",
+                  ),
+                  IconText(
+                    iconData: Icons.money,
+                    text: "${_meal.affordability.name}",
+                  ),
                 ],
               ),
             )
@@ -76,5 +89,3 @@ class MealItem extends StatelessWidget {
     );
   }
 }
-
-

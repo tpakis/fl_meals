@@ -46,7 +46,8 @@ extension ComplexityExt on MealComplexity {
         return "Challenging";
       case MealComplexity.Hard:
         return "Hard";
-        break;
+        //break; It's not necessary if you return everywhere,
+        // otherwise needed in every case that doesn't return
       default:
         return "Unknown";
     }
@@ -62,7 +63,8 @@ extension AffordabilityExt on MealAffordability {
         return "Luxurious";
       case MealAffordability.Pricey:
         return "Pricey";
-        break;
+      //break; It's not necessary if you return everywhere
+      // otherwise needed in every case that doesn't return
       default:
         return "Unknown";
     }

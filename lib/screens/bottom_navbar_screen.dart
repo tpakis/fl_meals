@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/data/CategoriesProvider.dart';
-import 'package:flutter_complete_guide/screens/categories_screen.dart';
-import 'package:flutter_complete_guide/screens/favorites_screen.dart';
+import '../data/CategoriesProvider.dart';
+import '../screens/categories_screen.dart';
+import '../screens/favorites_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
   @override
@@ -9,7 +9,6 @@ class BottomNavBarScreen extends StatefulWidget {
 }
 
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
-
   final List<Widget> pages = [
     CategoriesScreen(DummyCategoriesProvider()),
     FavoritesScreen(),
@@ -36,10 +35,16 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).accentColor,
         currentIndex: _selectedPageIndex,
+    //    type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.category), label: "Categories"),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Favorites"),
+        //      backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(Icons.category),
+              label: "Categories"),
+          BottomNavigationBarItem(
+        //      backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(Icons.star),
+              label: "Favorites"),
         ],
       ),
     );

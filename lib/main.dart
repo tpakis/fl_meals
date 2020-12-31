@@ -1,10 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/data/CategoriesProvider.dart';
-import 'package:flutter_complete_guide/data/MealsProvider.dart';
-import 'package:flutter_complete_guide/screens/category_meals_screen.dart';
-import 'package:flutter_complete_guide/screens/meal_detail_screen.dart';
+import './data/CategoriesProvider.dart';
+import './data/MealsProvider.dart';
+import './screens/category_meals_screen.dart';
+import './screens/meal_detail_screen.dart';
+import './screens/tabs_screen.dart';
 import './screens/categories_screen.dart';
 
 void main() => runApp(MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: "RobotoCondensed"),
             ),
       ),
-      home: CategoriesScreen(DummyCategoriesProvider()),
+      home: TabsScreen(),
       // initialRoute: "/" // default is "/",
       // map with curly
       routes: {

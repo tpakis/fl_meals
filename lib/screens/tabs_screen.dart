@@ -3,12 +3,8 @@ import '../data/CategoriesProvider.dart';
 import '../screens/favorites_screen.dart';
 import '../screens/categories_screen.dart';
 
-class TabsScreen extends StatefulWidget {
-  @override
-  _TabsScreenState createState() => _TabsScreenState();
-}
+class TabsScreen extends StatelessWidget {
 
-class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

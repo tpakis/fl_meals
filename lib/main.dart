@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/screens/bottom_navbar_screen.dart';
 import './data/CategoriesProvider.dart';
 import './data/MealsProvider.dart';
 import './screens/category_meals_screen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: "RobotoCondensed"),
             ),
       ),
-      home: TabsScreen(),
+      home: BottomNavBarScreen(),
       // initialRoute: "/" // default is "/",
       // map with curly
       routes: {

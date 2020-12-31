@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/screens/bottom_navbar_screen.dart';
+import './screens/bottom_navbar_screen.dart';
+import './screens/filters_screen.dart';
 import './data/CategoriesProvider.dart';
 import './data/MealsProvider.dart';
 import './screens/category_meals_screen.dart';
@@ -41,6 +42,8 @@ class MyApp extends StatelessWidget {
             ),
         MealDetailScreen.routeName: (context) =>
             MealDetailScreen(DummyMealsProvider()),
+        FiltersScreen.routeName: (context) =>
+            FiltersScreen(),
       },
       // this is used when we try to navigate to route (pushNamed) but this is not registered in routes.
       // we can exploit this for dynamic screen, or deep links since we get access to the settings which

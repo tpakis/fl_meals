@@ -10,6 +10,9 @@ class MealDetailScreen extends StatelessWidget {
 
   MealDetailScreen(this._mealsProvider);
 
+  // should be moved to a new widget instead of build method
+  // when Theme changes it will trigger a build of the whole screen. If it was
+  // on its own widget it would trigger a build of only that widget
   Widget _buildSectionTitle(BuildContext context, String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),

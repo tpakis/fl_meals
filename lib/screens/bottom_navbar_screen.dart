@@ -9,9 +9,15 @@ class BottomNavBarScreen extends StatefulWidget {
 }
 
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
-  final List<Widget> pages = [
-    CategoriesScreen(DummyCategoriesProvider()),
-    FavoritesScreen(),
+  final List<Map<String, Object>> pages = [
+    {
+      "page": CategoriesScreen(DummyCategoriesProvider()),
+      "title": "Categories",
+    },
+    {
+      "page": FavoritesScreen(),
+      "title": "Favorites",
+    },
   ];
 
   void _selectPage(int index) {
@@ -26,23 +32,23 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meals"),
+        title: Text(pages[_selectedPageIndex]["title"]),
       ),
-      body: pages[_selectedPageIndex],
+      body: pages[_selectedPageIndex]["page"],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).accentColor,
         currentIndex: _selectedPageIndex,
-    //    type: BottomNavigationBarType.shifting,
+        //    type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
-        //      backgroundColor: Theme.of(context).primaryColor,
+              //      backgroundColor: Theme.of(context).primaryColor,
               icon: Icon(Icons.category),
               label: "Categories"),
           BottomNavigationBarItem(
-        //      backgroundColor: Theme.of(context).primaryColor,
+              //      backgroundColor: Theme.of(context).primaryColor,
               icon: Icon(Icons.star),
               label: "Favorites"),
         ],

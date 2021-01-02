@@ -4,19 +4,28 @@ import '../widgets/icon_text.dart';
 import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({
-    Key key,
-    @required Meal meal,
-  })  : _meal = meal,
+  const MealItem(
+      {Key key, @required Meal meal, @required Function onMealRemoved})
+      : _meal = meal,
+        _onMealRemoved = onMealRemoved,
         super(key: key);
 
   final Meal _meal;
+  final Function(String) _onMealRemoved;
 
   void selectMeal(BuildContext context, String selectedMealId) {
-    Navigator.of(context).pushNamed(
+    // The navigation methods return a future which will be completed when the page is closed!
+    // Not when we navigate to that but when we come back or close it. It can also return an object
+    // as an argument of the pop method (remove) and we get this in the value of the future or null.
+    Navigator.of(context)
+        .pushNamed(
       MealDetailScreen.routeName,
       arguments: selectedMealId,
-    );
+    ).then((value) {
+      if (value != null && value is String) {
+        _onMealRemoved(value);
+      }
+    });
   }
 
   @override

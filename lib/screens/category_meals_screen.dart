@@ -6,16 +6,23 @@ import '../data/CategoriesProvider.dart';
 import '../models/category.dart';
 
 // ignore: must_be_immutable
-class CategoryMealsScreen extends StatelessWidget {
+class CategoryMealsScreen extends StatefulWidget {
   static const routeName = "/category-meals";
 
   final CategoriesProvider _categoriesProvider;
   final MealsProvider _mealsProvider;
 
-  Category _category;
-  List<Meal> _mealsInCategory;
 
   CategoryMealsScreen(this._categoriesProvider, this._mealsProvider);
+
+  @override
+  _CategoryMealsScreenState createState() => _CategoryMealsScreenState();
+}
+
+class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+  Category _category;
+
+  List<Meal> _mealsInCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +39,7 @@ class CategoryMealsScreen extends StatelessWidget {
           return MealItem(
             key: Key(mealToShow.id),
             meal: mealToShow,
+            onMealRemoved: onMealRemoved,
           );
         },
         itemCount: _mealsInCategory.length,
@@ -40,11 +48,19 @@ class CategoryMealsScreen extends StatelessWidget {
   }
 
   void setupMeals() {
-    _mealsInCategory = _mealsProvider.getAllMealsByCategoryId(_category.id);
+    _mealsInCategory = widget._mealsProvider.getAllMealsByCategoryId(_category.id);
   }
 
   void setupCategory(Map<String, String> arguments) {
     final categoryId = arguments["id"];
-    _category = _categoriesProvider.getCategoryById(categoryId);
+    _category = widget._categoriesProvider.getCategoryById(categoryId);
+  }
+
+  void onMealRemoved(String mealId) {
+    widget._mealsProvider.removeMealById(mealId);
+    setState(() {
+      // just to refresh the view state, the changes are handled by the meals provider
+      print("meal with id $mealId was removed!");
+    });
   }
 }

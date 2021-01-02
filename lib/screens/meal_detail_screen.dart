@@ -96,6 +96,12 @@ class MealDetailScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: () {
+          Navigator.of(context).pop(_meal.id);
+        },
+      ),
     );
   }
 
@@ -103,4 +109,5 @@ class MealDetailScreen extends StatelessWidget {
     String id = ModalRoute.of(context).settings.arguments as String;
     _meal = _mealsProvider.getMealById(id);
   }
+
 }
